@@ -1,5 +1,4 @@
 import { Container, Paper, Typography, Box, Link } from '@mui/material';
-import React from 'react';
 
 const Game = () => {
   return (
@@ -49,7 +48,7 @@ const Game = () => {
           About the Game
         </Typography>
         <Typography paragraph>
-          Paper Dungeon is an interactive browser-based dungeon crawler where you explore a unique paper-themed world. 
+          Paper Dungeon is an interactive browser-based card game where you explore a unique paper-themed world. 
           Navigate through different areas, face challenges, and discover new paths in this engaging gaming experience.
         </Typography>
 
@@ -61,13 +60,22 @@ const Game = () => {
         </Typography>
         <Box component="ul" sx={{ pl: 3 }}>
           <Typography component="li" paragraph>
-            Use the arrow keys or WASD to move your character
+          Home Screen: Click the doorknob on the door to start.
           </Typography>
           <Typography component="li" paragraph>
-            Explore different areas of the dungeon
+          Party Select: Choose your party size, assign roles, and select proficiencies for each role.
           </Typography>
           <Typography component="li" paragraph>
-            Interact with objects and discover new paths
+          Start Game: Begin the game; your players' decks are at the top, monsters' decks at the bottom.
+          </Typography>
+          <Typography component="li" paragraph>
+          Play a Round: Click each player's deck to draw two cards, select a card, and target a monster or another player.
+          </Typography>
+          <Typography component="li" paragraph>
+          Monster Turn: After all players have taken their turns, monsters resolve their actions.
+          </Typography>
+          <Typography component="li" paragraph>
+          Round End: The round ends when all players or monsters are defeated. Repeat until the game concludes.
           </Typography>
         </Box>
 

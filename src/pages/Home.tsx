@@ -2,7 +2,16 @@ import { Container, Typography, Box, Avatar } from '@mui/material';
 import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import React from 'react';
+
+// Import optimized images
+import robotChickenCoopWebp from '../assets/images-optimized/robot_chicken_coop.webp';
+import robotChickenCoopPng from '../assets/images-optimized/robot_chicken_coop.png';
+import jobHubWebp from '../assets/images-optimized/job-hub.webp';
+import jobHubPng from '../assets/images-optimized/job-hub.png';
+import cyberCampusWebp from '../assets/images-optimized/cyber-campus.webp';
+import cyberCampusPng from '../assets/images-optimized/cyber-campus.png';
+import paperDungeonWebp from '../assets/images-optimized/paper-dungeon.webp';
+import paperDungeonPng from '../assets/images-optimized/paper-dungeon.png';
 
 interface Testimonial {
   text: string;
@@ -10,6 +19,15 @@ interface Testimonial {
   title: string;
   company: string;
   image: string;
+}
+
+interface Image {
+  url: {
+    webp: any;
+    png: any;
+  };
+  referral: string;
+  githubUrl: string;
 }
 
 const Home = () => {
@@ -78,15 +96,43 @@ const Home = () => {
     },
   ];
 
-  const images = [
-    { url: '../../public/images/robot_chicken_coop.png', referral: 'Robot Chicken Coop' },
-    { url: '../../public/images/job-hub.png', referral: 'Job Hub' },
-    { url: '../../public/images/cyber-campus.png', referral: 'Cyber Campus' },
-    { url: '../../public/images/paper-dungeon.png', referral: 'Paper Dungeon' }
+  const images: Image[] = [
+    { 
+      url: {
+        webp: robotChickenCoopWebp,
+        png: robotChickenCoopPng
+      },
+      referral: 'Robot Chicken Coop',
+      githubUrl: 'https://github.com/g33krock/RobotChickenCoop'
+    },
+    {
+      url: {
+        webp: jobHubWebp,
+        png: jobHubPng
+      },
+      referral: 'Job Hub',
+      githubUrl: 'https://github.com/g33krock/JobHub'
+    },
+    {
+      url: {
+        webp: cyberCampusWebp,
+        png: cyberCampusPng
+      },
+      referral: 'Cyber Campus',
+      githubUrl: 'https://github.com/g33krock/aspire-digicampus'
+    },
+    {
+      url: {
+        webp: paperDungeonWebp,
+        png: paperDungeonPng
+      },
+      referral: 'Paper Dungeon',
+      githubUrl: 'https://github.com/g33krock/g33krock.github.io'
+    }
   ];
 
   return (
-    <Container maxWidth="lg" sx={{ mt: 4 }}>
+    <Container maxWidth="lg" sx={{ py: 4 }}>
       <Typography variant="h2" component="h1" gutterBottom align="center">
         Welcome to My Portfolio
       </Typography>
@@ -94,30 +140,45 @@ const Home = () => {
       <Box sx={{ maxWidth: 800, mx: 'auto', mb: 4 }}>
         <Slider {...projectSettings}>
           {images.map((image, index) => (
-            <Box key={index} sx={{ position: 'relative' }}>
-              <img
-                src={image.url}
-                alt={image.referral}
-                style={{
-                  width: '100%',
-                  height: '400px',
-                  objectFit: 'cover',
-                }}
-              />
-              <Typography
-                sx={{
-                  position: 'absolute',
-                  bottom: 20,
-                  left: 20,
-                  color: 'white',
-                  backgroundColor: 'rgba(0,0,0,0.7)',
-                  padding: '5px 10px',
-                  borderRadius: '4px',
-                }}
-              >
-                {image.referral}
-              </Typography>
-            </Box>
+            <div key={index}>
+              <div style={{ position: 'relative', padding: '8px' }}>
+                <a href={image.githubUrl} target="_blank" rel="noopener noreferrer" style={{ cursor: 'pointer', display: 'block' }}>
+                  <picture>
+                    <source srcSet={image.url.webp} type="image/webp" />
+                    <img
+                      src={image.url.png}
+                      alt={image.referral}
+                      style={{
+                        width: '100%',
+                        height: 'auto',
+                        maxHeight: '400px',
+                        objectFit: 'cover',
+                        borderRadius: '8px',
+                        display: 'block'
+                      }}
+                    />
+                    <div
+                      style={{
+                        position: 'absolute',
+                        bottom: '8px',
+                        left: '8px',
+                        right: '8px',
+                        backgroundColor: 'rgba(0, 0, 0, 0.7)',
+                        color: 'white',
+                        padding: '16px',
+                        borderBottomLeftRadius: '8px',
+                        borderBottomRightRadius: '8px',
+                        textAlign: 'center'
+                      }}
+                    >
+                      <Typography variant="h6">
+                        {image.referral}
+                      </Typography>
+                    </div>
+                  </picture>
+                </a>
+              </div>
+            </div>
           ))}
         </Slider>
       </Box>
@@ -143,17 +204,16 @@ const Home = () => {
                 p: 4,
                 boxShadow: 1
               }}>
-                <Avatar
-                  src={testimonial.image}
-                  alt={testimonial.author}
-                  sx={{ 
-                    width: 120,
-                    height: 120,
-                    mb: 2,
-                    border: 3,
-                    borderColor: 'primary.main'
-                  }}
-                />
+                <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 2 }}>
+                  <Avatar 
+                    alt={testimonial.author} 
+                    src={testimonial.image} 
+                    sx={{ 
+                      width: 100, 
+                      height: 100 
+                    }} 
+                  />
+                </Box>
                 <Typography variant="body1" sx={{ 
                   fontStyle: 'italic',
                   mb: 2,

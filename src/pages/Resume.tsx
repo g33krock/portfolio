@@ -1,9 +1,6 @@
-import { Container, Typography, Box, Grid, Paper, List, ListItem, ListItemText, Chip, Divider, Link, IconButton, Button } from '@mui/material';
-import EmailIcon from '@mui/icons-material/Email';
-import PhoneIcon from '@mui/icons-material/Phone';
-import LocationOnIcon from '@mui/icons-material/LocationOn';
-import GetAppIcon from '@mui/icons-material/GetApp';
-import React, { useRef } from 'react';
+import { Container, Typography, Button, Box, Grid, Paper } from '@mui/material';
+import DownloadIcon from '@mui/icons-material/Download';
+import { useRef } from 'react';
 import html2pdf from 'html2pdf.js';
 
 const Resume = () => {
@@ -25,9 +22,9 @@ const Resume = () => {
   };
 
   const contactInfo = {
-    email: '',
-    phone: '',
-    location: ''
+    email: 'dallaslovell@gmail.com',
+    phone: '480-823-1141',
+    location: 'Phoenix, AZ'
   };
 
   const skills = {
@@ -43,7 +40,7 @@ const Resume = () => {
       <Box sx={{ display: 'flex', justifyContent: 'flex-end', mb: 2 }}>
         <Button
           variant="contained"
-          startIcon={<GetAppIcon />}
+          startIcon={<DownloadIcon />}
           onClick={handleDownloadPDF}
           sx={{ mb: 2 }}
         >
@@ -59,16 +56,13 @@ const Resume = () => {
           
           <Box sx={{ display: 'flex', gap: 3, mt: 2, flexWrap: 'wrap' }}>
             <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-              <EmailIcon color="primary" />
-              <Link href={`mailto:${contactInfo.email}`} underline="hover">{contactInfo.email}</Link>
+              <Typography>Email: {contactInfo.email}</Typography>
             </Box>
             <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-              <PhoneIcon color="primary" />
-              <Typography>{contactInfo.phone}</Typography>
+              <Typography>Phone: {contactInfo.phone}</Typography>
             </Box>
             <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-              <LocationOnIcon color="primary" />
-              <Typography>{contactInfo.location}</Typography>
+              <Typography>Location: {contactInfo.location}</Typography>
             </Box>
           </Box>
         </Paper>
@@ -80,109 +74,65 @@ const Resume = () => {
           <Box sx={{ mb: 4 }}>
             <Typography variant="h6">Software Engineer</Typography>
             <Typography variant="subtitle1" color="primary">Health Catalyst — Feb 2022 - Feb 2025</Typography>
-            <List>
-              <ListItem>
-                <ListItemText primary="Led development of budget adjustment features in planning tools for healthcare systems." />
-              </ListItem>
-              <ListItem>
-                <ListItemText primary="Contributed to features and improvements throughout the stack, including database queries, HTTP endpoints, and front-end UI." />
-              </ListItem>
-              <ListItem>
-                <ListItemText primary="Used .NET Web API to connect frontend code to stored procedures in SQL Server, write business logic for sorting, filtering, calculations, and data shaping, and implement unit tests." />
-              </ListItem>
-              <ListItem>
-                <ListItemText primary="Implemented Angular 15 for the front-end of patient management systems, ensuring compliance with web standards and accessibility guidelines." />
-              </ListItem>
-              <ListItem>
-                <ListItemText primary="Utilized Azure Cloud Services for deploying scalable healthcare applications, achieving 99.9% uptime." />
-              </ListItem>
-              <ListItem>
-                <ListItemText primary="Integrated Azure AI services and GPT-3 for healthcare data analysis and chatbot enhancement." />
-              </ListItem>
-              <ListItem>
-                <ListItemText primary="Maintained automated deployment pipelines for over 150 client environments in Azure DevOps." />
-              </ListItem>
-            </List>
+            <Typography variant="body1">Led development of budget adjustment features in planning tools for healthcare systems.</Typography>
+            <Typography variant="body1">Contributed to features and improvements throughout the stack, including database queries, HTTP endpoints, and front-end UI.</Typography>
+            <Typography variant="body1">Used .NET Web API to connect frontend code to stored procedures in SQL Server, write business logic for sorting, filtering, calculations, and data shaping, and implement unit tests.</Typography>
+            <Typography variant="body1">Implemented Angular 15 for the front-end of patient management systems, ensuring compliance with web standards and accessibility guidelines.</Typography>
+            <Typography variant="body1">Utilized Azure Cloud Services for deploying scalable healthcare applications, achieving 99.9% uptime.</Typography>
+            <Typography variant="body1">Integrated Azure AI services and GPT-3 for healthcare data analysis and chatbot enhancement.</Typography>
+            <Typography variant="body1">Maintained automated deployment pipelines for over 150 client environments in Azure DevOps.</Typography>
             <Box sx={{ mt: 1 }}>
               <Typography variant="subtitle2" gutterBottom>Technologies:</Typography>
               <Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap' }}>
                 {['C#', '.NET Web API', 'SQL Server', 'Angular 15', 'RxJS', 'Redux', 'SCSS', 'Azure Cloud', 'Azure Active Directory'].map((tech) => (
-                  <Chip key={tech} label={tech} size="small" />
+                  <Typography key={tech} variant="body2">{tech}</Typography>
                 ))}
               </Box>
             </Box>
           </Box>
-
-          <Divider sx={{ my: 3 }} />
 
           <Box sx={{ mb: 4 }}>
             <Typography variant="h6">Software Developer (Contract)</Typography>
             <Typography variant="subtitle1" color="primary">Agate Software — Feb 2024 - Apr 2024</Typography>
-            <List>
-              <ListItem>
-                <ListItemText primary="Developed state government solutions using .NET Framework, improving data integrity and workflow efficiency." />
-              </ListItem>
-              <ListItem>
-                <ListItemText primary="Managed Azure SQL databases and implemented Azure DevOps CI/CD pipelines." />
-              </ListItem>
-              <ListItem>
-                <ListItemText primary="Integrated AI-driven analytics features using Azure Cognitive Services." />
-              </ListItem>
-            </List>
+            <Typography variant="body1">Developed state government solutions using .NET Framework, improving data integrity and workflow efficiency.</Typography>
+            <Typography variant="body1">Managed Azure SQL databases and implemented Azure DevOps CI/CD pipelines.</Typography>
+            <Typography variant="body1">Integrated AI-driven analytics features using Azure Cognitive Services.</Typography>
             <Box sx={{ mt: 1 }}>
               <Typography variant="subtitle2" gutterBottom>Technologies:</Typography>
               <Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap' }}>
                 {['SQL Server', 'Visual Basic', 'C#', 'Javascript', 'Azure'].map((tech) => (
-                  <Chip key={tech} label={tech} size="small" />
+                  <Typography key={tech} variant="body2">{tech}</Typography>
                 ))}
               </Box>
             </Box>
           </Box>
-
-          <Divider sx={{ my: 3 }} />
 
           <Box sx={{ mb: 4 }}>
             <Typography variant="h6">Full Stack Developer (Contract)</Typography>
             <Typography variant="subtitle1" color="primary">MPI Unlimited — Nov 2021 - Feb 2022</Typography>
-            <List>
-              <ListItem>
-                <ListItemText primary="Created a configurable website generator used by 40+ financial services agencies." />
-              </ListItem>
-              <ListItem>
-                <ListItemText primary="Led development of an event management platform using .NET and React." />
-              </ListItem>
-              <ListItem>
-                <ListItemText primary="Maintained company landing page and five interconnected marketing sites." />
-              </ListItem>
-            </List>
+            <Typography variant="body1">Created a configurable website generator used by 40+ financial services agencies.</Typography>
+            <Typography variant="body1">Led development of an event management platform using .NET and React.</Typography>
+            <Typography variant="body1">Maintained company landing page and five interconnected marketing sites.</Typography>
             <Box sx={{ mt: 1 }}>
               <Typography variant="subtitle2" gutterBottom>Technologies:</Typography>
               <Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap' }}>
                 {['PostgreSQL', 'Node', 'Express', 'React', 'WordPress', 'JavaScript', 'PHP', 'CSS'].map((tech) => (
-                  <Chip key={tech} label={tech} size="small" />
+                  <Typography key={tech} variant="body2">{tech}</Typography>
                 ))}
               </Box>
             </Box>
           </Box>
 
-          <Divider sx={{ my: 3 }} />
-
           <Box sx={{ mb: 4 }}>
             <Typography variant="h6">Technology Director</Typography>
             <Typography variant="subtitle1" color="primary">AZ Aspire Academy — Aug 2020 - Feb 2022</Typography>
-            <List>
-              <ListItem>
-                <ListItemText primary="Developed CyberCampus student information platform used by 60+ teachers across 5 campuses." />
-              </ListItem>
-              <ListItem>
-                <ListItemText primary="Built features for tracking grades, attendance, accommodations, and automated reporting." />
-              </ListItem>
-            </List>
+            <Typography variant="body1">Developed CyberCampus student information platform used by 60+ teachers across 5 campuses.</Typography>
+            <Typography variant="body1">Built features for tracking grades, attendance, accommodations, and automated reporting.</Typography>
             <Box sx={{ mt: 1 }}>
               <Typography variant="subtitle2" gutterBottom>Technologies:</Typography>
               <Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap' }}>
                 {['PostgreSQL', 'TypeORM', 'Node', 'Express', 'React', 'CSS'].map((tech) => (
-                  <Chip key={tech} label={tech} size="small" />
+                  <Typography key={tech} variant="body2">{tech}</Typography>
                 ))}
               </Box>
             </Box>
@@ -195,19 +145,13 @@ const Resume = () => {
           <Box sx={{ mb: 4 }}>
             <Typography variant="h6">Lead Developer</Typography>
             <Typography variant="subtitle1" color="primary">TukeeToolbox, NonProfit Project — Oct 2023 - Present</Typography>
-            <List>
-              <ListItem>
-                <ListItemText primary="Lead team of 3 engineers developing organization and data presentation product." />
-              </ListItem>
-              <ListItem>
-                <ListItemText primary="Built features for data integration, comparison, and automated alerting." />
-              </ListItem>
-            </List>
+            <Typography variant="body1">Lead team of 3 engineers developing organization and data presentation product.</Typography>
+            <Typography variant="body1">Built features for data integration, comparison, and automated alerting.</Typography>
             <Box sx={{ mt: 1 }}>
               <Typography variant="subtitle2" gutterBottom>Technologies:</Typography>
               <Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap' }}>
                 {['AWS', 'Terraform', 'SQL', 'Python', 'Javascript'].map((tech) => (
-                  <Chip key={tech} label={tech} size="small" />
+                  <Typography key={tech} variant="body2">{tech}</Typography>
                 ))}
               </Box>
             </Box>
@@ -251,7 +195,7 @@ const Resume = () => {
               <Typography variant="h6" gutterBottom>Languages</Typography>
               <Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap' }}>
                 {skills.languages.map((skill) => (
-                  <Chip key={skill} label={skill} size="small" />
+                  <Typography key={skill} variant="body2">{skill}</Typography>
                 ))}
               </Box>
             </Grid>
@@ -260,7 +204,7 @@ const Resume = () => {
               <Typography variant="h6" gutterBottom>Frameworks</Typography>
               <Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap' }}>
                 {skills.frameworks.map((skill) => (
-                  <Chip key={skill} label={skill} size="small" />
+                  <Typography key={skill} variant="body2">{skill}</Typography>
                 ))}
               </Box>
             </Grid>
@@ -269,7 +213,7 @@ const Resume = () => {
               <Typography variant="h6" gutterBottom>Cloud & DevOps</Typography>
               <Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap' }}>
                 {skills.cloud.map((skill) => (
-                  <Chip key={skill} label={skill} size="small" />
+                  <Typography key={skill} variant="body2">{skill}</Typography>
                 ))}
               </Box>
             </Grid>
@@ -278,7 +222,7 @@ const Resume = () => {
               <Typography variant="h6" gutterBottom>Databases</Typography>
               <Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap' }}>
                 {skills.databases.map((skill) => (
-                  <Chip key={skill} label={skill} size="small" />
+                  <Typography key={skill} variant="body2">{skill}</Typography>
                 ))}
               </Box>
             </Grid>
@@ -287,7 +231,7 @@ const Resume = () => {
               <Typography variant="h6" gutterBottom>Other Technologies</Typography>
               <Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap' }}>
                 {skills.other.map((skill) => (
-                  <Chip key={skill} label={skill} size="small" />
+                  <Typography key={skill} variant="body2">{skill}</Typography>
                 ))}
               </Box>
             </Grid>
